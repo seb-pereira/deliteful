@@ -21,8 +21,8 @@
 		], function (dom, register, on, Deferred, ProgressIndicator) {
 			register.parse();
 			var testIndicator = dom.byId("testIndicator");
-			var testIndicatorPrg = new ProgressIndicator({autoStart: true, style: "color:red"}).placeAt("testIndicatorPrgLabel", "after");
-			testIndicatorPrg.startup();
+//			var testIndicatorPrg = new ProgressIndicator({autoStart: true, style: "color:red"}).placeAt("testIndicatorPrgLabel", "after");
+//			testIndicatorPrg.startup();
 
 			var inputSize = dom.byId("sizeTxt");
 			var inputValue = dom.byId("valueTxt");
@@ -30,44 +30,44 @@
 
 			setValue = function (value) {
 				testIndicator.value = value;
-				testIndicatorPrg.value = value;
+//				testIndicatorPrg.value = value;
 			};
 			on(dom.byId("startBtn"), "click", function() {
 				testIndicator.start();
-				testIndicatorPrg.start();
+//				testIndicatorPrg.start();
 			});
 			on(dom.byId("stopBtn"), "click", function() {
 				testIndicator.stop();
-				testIndicatorPrg.stop();
+//				testIndicatorPrg.stop();
 			});
 			on(dom.byId("removeBtn"), "click", function() {
 				testIndicator.stop(true);
-				testIndicatorPrg.stop(true);
+//				testIndicatorPrg.stop(true);
 			});
 			setLapsTime = function (lapsTime) {
 				testIndicator.lapsTime = lapsTime;
-				testIndicatorPrg.lapsTime = lapsTime;
+//				testIndicatorPrg.lapsTime = lapsTime;
 			};
 			setSize = function (size) {
 				testIndicator.style.width = testIndicator.style.height = size;
-				testIndicatorPrg.style.width = testIndicatorPrg.style.height = size;
+//				testIndicatorPrg.style.width = testIndicatorPrg.style.height = size;
 				//hack to force ie9 to redraw after size changes...
 				testIndicator.style.display = "none";
 				testIndicator.style.removeProperty("display");
-				testIndicatorPrg.style.display = "none";
-				testIndicatorPrg.style.removeProperty("display");
+//				testIndicatorPrg.style.display = "none";
+//				testIndicatorPrg.style.removeProperty("display");
 			};
 			setColor = function (color) {
 				testIndicator.color = color;
-				testIndicatorPrg.color = color;
+//				testIndicatorPrg.color = color;
 			};
 			setDisplay = function (type) {
 				if (type) {
 					testIndicator.style.display = type;
-					testIndicatorPrg.style.display = type;
+//					testIndicatorPrg.style.display = type;
 				} else {
 					testIndicator.style.removeProperty('display');
-					testIndicatorPrg.style.removeProperty('display');
+//					testIndicatorPrg.style.removeProperty('display');
 				}
 			};
 			on(dom.byId("setSizeBtn"), "click", function() {
@@ -130,9 +130,11 @@
 		<h3>d-progress-indicator</h3>
 		<hr>
 		Declarative
-		<d-progress-indicator id="testIndicator"></d-progress-indicator>.
+		<d-progress-indicator id="testIndicator" autoStart="true"></d-progress-indicator>.
+<!--
 		<hr>
 		<span id="testIndicatorPrgLabel">Programmatic:</span>.
+-->
 		<hr>
 		<input type="button" id="startBtn" value="start"/>
 		<input type="button" id="stopBtn" value="stop"/>
