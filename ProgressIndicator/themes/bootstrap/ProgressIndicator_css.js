@@ -8,7 +8,6 @@ define(function(){ return '\
  */\
 .d-progress-indicator {\
   display: inline-block;\
-  visibility: hidden;\
   vertical-align: middle;\
   background-color: transparent;\
   -webkit-touch-callout: none;\
@@ -29,5 +28,8 @@ define(function(){ return '\
 }\
 .d-progress-indicator text {\
   fill: #333333;\
+}\
+.d-progress-indicator.d-hidden {\
+  visibility: hidden;\
 }\
 '; } );

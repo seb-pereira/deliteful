@@ -1,11 +1,12 @@
 define([
 	"dcl/dcl",
+	"dojo/dom-class",
 	"delite/register",
 	"delite/Widget",
 	"delite/Invalidating",
 	"delite/handlebars!./ProgressIndicator/ProgressIndicator.html",
 	"delite/themes/load!delite/themes/{{theme}}/common_css,./ProgressIndicator/themes/{{theme}}/ProgressIndicator_css"
-], function (dcl, register, Widget, Invalidating, renderer) {
+], function (dcl, domClass, register, Widget, Invalidating, renderer) {
 
 	return register("d-progress-indicator", [HTMLElement, Widget, Invalidating], {
 		// summary:
@@ -228,7 +229,7 @@ define([
 				//set visibility in frame to be in sync with opacity/text changes.
 				//Avoids mis-display when setting visibility=visible just after value=0.
 				this._requestRendering(function () {
-					this.style.visibility = this.active ? "visible" : "hidden";
+					domClass.toggle(this, "d-hidden", !this.active);
 				}.bind(this));
 			}
 		},

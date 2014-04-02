@@ -7,10 +7,17 @@ define([
 		FRAME_DELAY = 150, //delay, in ms, to test for value changed in animation frame
 		FRAME_TIMEOUT = FRAME_DELAY + 50;
 
+	//simple helper to test if an element contains a class
+	function hasClass(element, className) {
+		return (" " + element.className.replace(/\s{2,}/g, " ") + " ").indexOf(" " + className + " ") > -1;
+	}
+
 	//check progressIndicator node visibility style value.
 	function checkVisibility(visibility, msg) {
 		assert.strictEqual(window.getComputedStyle(progressIndicator).getPropertyValue("visibility"), visibility, msg);
+		assert(progressIndicator.active !== hasClass("d-hidden"));
 	}
+	
 
 	registerSuite({
 		name: "ProgressIndicator",
